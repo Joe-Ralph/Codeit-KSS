@@ -1,0 +1,22 @@
+# UNDO REDO PROBLEM
+inputList = ['WRITE A', 'WRITE B', 'WRITE C', 'UNDO', 'READ', 'REDO', 'READ']
+
+def solution(inputList):
+    stack=[]
+    anslist=[]
+    for i in inputList:
+        if i == "UNDO":
+            x = anslist.pop()
+            stack.append(x)
+        elif i == "REDO":
+            x = stack.pop()
+            anslist.append(x)
+        elif i == "READ":
+            print("".join(anslist),end=" ")
+        else:
+            anslist.append(i.split(' ')[1])
+    print()
+
+solution(inputList)
+
+#ans AB ABC

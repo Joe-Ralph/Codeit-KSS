@@ -1,0 +1,16 @@
+def longestCommonSubstring(string):
+    n = len(string)
+    start = end = 0
+    maxlen = 0
+    substringSet = set()
+    while end < n:
+        if string[end] in substringSet:
+            substringSet.remove(string[start])
+            start+=1
+        else:
+            substringSet.add(string[end])
+            end+=1
+            if maxlen<len(substringSet): maxlen=len(substringSet)
+    return maxlen
+
+print(longestCommonSubstring('bacadebcbb'))
